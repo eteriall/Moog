@@ -24,8 +24,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.EditText;import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Log.w("p", String.valueOf(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)));
         Log.w("p", String.valueOf(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            
+
             return;
         }
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
