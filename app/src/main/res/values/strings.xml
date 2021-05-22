@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Moog</string>
+    <string name="small_card_layout_spacing">30dp</string>
+</resources>
