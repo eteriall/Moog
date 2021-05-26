@@ -2,72 +2,87 @@ package com.example.moog;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Calendar;
-import java.util.List;
+import java.util.ArrayList;
 
 public class WeatherResponse {
-    public class WeatherTemp {
-        Double temp;
-        Double temp_min;
-        Double temp_max;
-    }
 
-    public class WeatherDescription {
-        String icon;
-    }
-
-    @SerializedName("main")
-    private WeatherTemp temp;
-
+    @SerializedName("coord")
+    public Coord coord;
+    @SerializedName("sys")
+    public Sys sys;
     @SerializedName("weather")
-    private List<WeatherDescription> desctiption;
-
-    @SerializedName("name")
-    private String city;
-
+    public ArrayList<Weather> weather = new ArrayList<Weather>();
+    @SerializedName("main")
+    public Main main;
+    @SerializedName("wind")
+    public Wind wind;
+    @SerializedName("rain")
+    public Rain rain;
+    @SerializedName("clouds")
+    public Clouds clouds;
     @SerializedName("dt")
-    private long timestamp;
+    public float dt;
+    @SerializedName("id")
+    public int id;
+    @SerializedName("name")
+    public String name;
+    @SerializedName("cod")
+    public float cod;
+}
 
-    public WeatherResponse(WeatherTemp temp, List<WeatherDescription> desctiption) {
-        this.temp = temp;
-        this.desctiption = desctiption;
-    }
+class Weather {
+    @SerializedName("id")
+    public int id;
+    @SerializedName("main")
+    public String main;
+    @SerializedName("description")
+    public String description;
+    @SerializedName("icon")
+    public String icon;
+}
 
-    public Calendar getDate() {
-        Calendar date = Calendar.getInstance();
-        date.setTimeInMillis(timestamp * 1000);
-        return date;
-    }
+class Clouds {
+    @SerializedName("all")
+    public float all;
+}
 
-    public String getTemp() {
-        return String.valueOf(temp.temp);
-    }
+class Rain {
+    @SerializedName("3h")
+    public float h3;
+}
 
-    public String getTempMin() {
-        return String.valueOf(temp.temp_min);
-    }
+class Wind {
+    @SerializedName("speed")
+    public float speed;
+    @SerializedName("deg")
+    public float deg;
+}
 
-    public String getTempMax() {
-        return String.valueOf(temp.temp_max);
-    }
+class Main {
+    @SerializedName("temp")
+    public float temp;
+    @SerializedName("humidity")
+    public float humidity;
+    @SerializedName("pressure")
+    public float pressure;
+    @SerializedName("temp_min")
+    public float temp_min;
+    @SerializedName("temp_max")
+    public float temp_max;
+}
 
-    public String getTempInteger() {
-        return String.valueOf(temp.temp.intValue());
-    }
+class Sys {
+    @SerializedName("country")
+    public String country;
+    @SerializedName("sunrise")
+    public long sunrise;
+    @SerializedName("sunset")
+    public long sunset;
+}
 
-    public String getTempWithDegree() {
-        return String.valueOf(temp.temp.intValue()) + "\u00B0";
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getIcon() {
-        return desctiption.get(0).icon;
-    }
-
-    public String getIconUrl() {
-        return "http://openweathermap.org/img/w/" + desctiption.get(0).icon + ".png";
-    }
+class Coord {
+    @SerializedName("lon")
+    public float lon;
+    @SerializedName("lat")
+    public float lat;
 }
