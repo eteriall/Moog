@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0E0837"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="452dp"
-        android:layout_height="894dp"
-        android:background="#0E0837"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:text="Москва"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:text="МОСКВА"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
@@ -54,16 +45,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/last_updated_time"
                 android:layout_width="189dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/date_container"
-                android:fontFamily="@font/nunito_sans_bold"
+                android:fontFamily="@font/gilroy_semibold"
                 android:gravity="center"
                 android:text="Вс, 9 марта 2021"
                 android:textColor="#000000" />
@@ -94,8 +85,10 @@
                     android:id="@+id/temperature"
                     android:layout_width="match_parent"
                     android:layout_height="102dp"
+                    android:layout_marginStart="10px"
+                    android:layout_marginLeft="10px"
                     android:layout_marginTop="-60px"
-                    android:fontFamily="@font/nunito_sans_semibold"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:gravity="center_horizontal|top"
                     android:text="23º"
                     android:textColor="#FFFFFF"
@@ -105,22 +98,22 @@
                     android:id="@+id/weather_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_sans_semibold"
+                    android:fontFamily="@font/gilroy_medium"
                     android:gravity="center"
                     android:text="Дождь, сильный ветер"
                     android:textColor="#FFFFFF"
-                    android:textSize="13sp" />
+                    android:textSize="14.4sp" />
 
                 <TextView
                     android:id="@+id/weather_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
-                    android:fontFamily="@font/nunito_sans_semibold"
+                    android:fontFamily="@font/gilroy_medium"
                     android:gravity="center"
                     android:text="Проведите время с пользой"
                     android:textColor="#FFFFFF"
-                    android:textSize="13sp"
+                    android:textSize="14.4sp"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -137,7 +130,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="51dp"
+                    android:layout_width="64dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
@@ -156,27 +149,28 @@
                         android:id="@+id/humidity_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_extrabold"
                         android:gravity="center"
                         android:text="75%"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/humidity_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_bold"
                         android:gravity="center"
-                        android:text="Влажность"
+                        android:text="ВЛАЖНОСТЬ"
                         android:textColor="#B9B1FA"
-                        android:textSize="9sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="51dp"
+                    android:layout_width="64dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -192,27 +186,28 @@
                         android:id="@+id/wind_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_extrabold"
                         android:gravity="center"
                         android:text="8 км/ч"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/wind_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_bold"
                         android:gravity="center"
-                        android:text="Ветер"
+                        android:text="ВЕТЕР"
                         android:textColor="#B9B1FA"
-                        android:textSize="9sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="51dp"
+                    android:layout_width="64dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -228,29 +223,31 @@
                         android:id="@+id/pressure_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_extrabold"
                         android:gravity="center"
                         android:text="1086"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/pressure_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_bold"
                         android:gravity="center"
-                        android:text="Давление"
+                        android:text="ДАВЛЕНИЕ"
                         android:textColor="#B9B1FA"
-                        android:textSize="9sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="51dp"
+                    android:layout_width="64dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/visibility_icon"
@@ -264,20 +261,21 @@
                         android:id="@+id/visibility_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_extrabold"
                         android:gravity="center"
                         android:text="6 км"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/visibility_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_black"
+                        android:fontFamily="@font/gilroy_bold"
                         android:gravity="center"
-                        android:text="Видимость"
+                        android:text="ВИДИМОСТЬ"
                         android:textColor="#B9B1FA"
-                        android:textSize="9sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
 
