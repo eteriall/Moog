@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class RecyclerViewWeathercardAdapter extends RecyclerView.Adapter<Recycle
         this.list = horizontalList;
     }
 
+
     @Override
     public WeatherCardView onCreateViewHolder(ViewGroup parent,
                                               int viewType) {
@@ -85,7 +87,6 @@ public class RecyclerViewWeathercardAdapter extends RecyclerView.Adapter<Recycle
         int y = originalPos[1];
         Log.i("", String.valueOf(x));
     }
-
 
 
     @Override

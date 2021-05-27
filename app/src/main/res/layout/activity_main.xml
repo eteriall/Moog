@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal|top"
@@ -17,72 +18,51 @@
         tools:layout_editor_absoluteY="27dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="95dp"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="5dp"
-                android:layout_height="40dp"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="25dp"
-                android:layout_weight="0.4"
                 android:width="5dp"
-                android:background="@drawable/left_arrow"
-                android:onClick="previousCard"
+                android:background="@drawable/minus"
+                android:onClick="removeCity"
                 android:visibility="visible" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="267dp"
+                android:layout_height="62dp"
                 android:layout_marginTop="24dp"
-                android:fontFamily="@font/gilroy_extrabold"
+                android:fontFamily="@font/gilroy_heavy"
+                android:gravity="center"
                 android:text="МОСКВА"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="1px"
-                android:layout_height="40dp"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="0.4"
                 android:width="5dp"
-                android:background="@drawable/right_arrow"
-                android:onClick="nextCard"
+                android:background="@drawable/plus"
+                android:onClick="addCity"
                 android:visibility="visible" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="68dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_sans_semibold"
-            android:gravity="center"
-            android:text="00:00 PM"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp" />
-
         <Space
             android:layout_width="match_parent"
-            android:layout_height="24dp" />
+            android:layout_height="wrap_content" />
 
         <Space
             android:layout_width="match_parent"
@@ -95,6 +75,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
+            android:background="#00FFFFFF"
             android:foregroundGravity="clip_horizontal"
             android:layoutAnimation="@anim/weather_card_anim"
             android:scrollbars="horizontal"
@@ -106,6 +87,7 @@
             android:layout_height="12dp" />
 
         <LinearLayout
+            android:id="@+id/bottomCard"
             android:layout_width="315dp"
             android:layout_height="92dp"
             android:background="@drawable/ic_params_card_bg"

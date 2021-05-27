@@ -1,5 +1,6 @@
 package com.example.moog;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -18,9 +20,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import android.widget.TextView;
@@ -121,11 +127,53 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this,
                 LinearLayoutManager.HORIZONTAL,
                 false);
-        recyclerView.setLayoutManager(HorizontalLayout);
 
-        // Set adapter on recycler view
+
+        recyclerView.setLayoutManager(HorizontalLayout);
         recyclerView.setAdapter(adapter);
         Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2);
+    }
+
+    public void removeCity(View v){
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Remove city");
+        String[] types = source.toArray(new String[0]);
+        b.setItems(types, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+                source.remove(which);
+            }
+
+        });
+
+        b.show();
+    }
+    public void addCity(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("New city");
+        builder.setMessage("Insert new city name");
+        EditText input = new EditText(this);
+        builder.setView(input);
+
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String txt = input.getText().toString();
+                source.add(txt);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog ad = builder.create();
+        ad.show();
     }
 
     public void AddItemsToRecyclerViewArrayList() {
@@ -137,23 +185,9 @@ public class MainActivity extends AppCompatActivity {
         source.add("Paris");
     }
 
-    public void nextCard(View v) {
-        Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2 + 1);
-    }
-
-    public void previousCard(View v) {
-        Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2 - 1);
-    }
-
     public static String formatDate(long date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
         return sdf.format(date);
-    }
-
-
-    public static double roundAvoid(double value, int places) {
-        double scale = Math.pow(10, places);
-        return Math.round(value * scale) / scale;
     }
 
     double toCelcius(double Kelvin) {
@@ -196,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
             }
             current_city = cityName;
             city.setText(cityName.toUpperCase());
+            WeatherApiInteraction.updateBottom(findViewById(R.id.bottomCard), current_city);
         }
 
         @Override

@@ -3,6 +3,8 @@ package com.example.moog;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,27 +26,30 @@ public class WeatherApiInteraction {
     public static String API = "294d139869b6097d30eeba8c6a5f351c";
     public static String BaseUrl = "http://api.openweathermap.org/";
 
-
-    public WeatherResponse getWeather(long lat, long lon) {
-        // Sending Request
+    public static void updateBottom(View bottomcard, String q) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         WeatherService service = retrofit.create(WeatherService.class);
-        Call<WeatherResponse> call = service.getCurrentWeatherData(String.valueOf(lat), String.valueOf(lon), API, Locale.getDefault().getLanguage());
-        final WeatherResponse[] weatherResponse = new WeatherResponse[1];
+        Call<WeatherResponse> call = service.getCurrentWeatherData(q, API, Locale.getDefault().getLanguage());
 
-        // Getting response
         call.enqueue(new Callback<WeatherResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
                 if (response.code() == 200) {
-                    weatherResponse[0] = response.body();
-                    assert weatherResponse[0] != null;
+                    WeatherResponse weatherResponse = response.body();
+                    assert weatherResponse != null;
+                    TextView pressure_value = bottomcard.findViewById(R.id.pressure_value);
+                    TextView humidity_value = bottomcard.findViewById(R.id.humidity_value);
+                    TextView wind_value = bottomcard.findViewById(R.id.wind_value);
+                    pressure_value.setText(String.valueOf((int) weatherResponse.main.pressure));
+                    humidity_value.setText(String.valueOf((int) weatherResponse.main.humidity) + "%");
+                    wind_value.setText(String.valueOf((int) weatherResponse.wind.speed) + " км/ч");
+                    Log.w("", String.valueOf(weatherResponse.main.pressure));
                 } else {
-                    Log.w("", String.valueOf(response.code()));
+                    Log.e("ERROR", String.valueOf(response.code()) + " " + q);
                 }
             }
 
@@ -53,10 +58,7 @@ public class WeatherApiInteraction {
                 Log.w("", t.getMessage());
             }
         });
-        return weatherResponse[0];
     }
-
-
 
 
     static double toCelcius(double Kelvin) {
