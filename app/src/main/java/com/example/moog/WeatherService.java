@@ -10,4 +10,9 @@ public interface WeatherService {
                                                 @Query("lon") String lon,
                                                 @Query("appid") String app_id,
                                                 @Query("lang") String lang);
+
+    @GET("data/2.5/weather?")
+    Call<WeatherResponse> getCurrentWeatherData(@Query("q") String q,
+                                                @Query("appid") String app_id,
+                                                @Query("lang") String lang);
 }

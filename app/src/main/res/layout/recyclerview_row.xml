@@ -1,15 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/recycler_view_element"
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvAnimalName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp" />
+    <LinearLayout
+        android:id="@+id/infoParent"
+        android:layout_width="304dp"
+        android:layout_height="460dp"
+        android:gravity="center_horizontal|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/last_updated_time"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/date_container"
+            android:fontFamily="@font/gilroy_semibold"
+            android:gravity="center"
+            android:text="Вс, 9 марта 2021"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="323dp"
+            android:layout_height="417dp"
+            android:layout_marginTop="-15px"
+            android:background="@drawable/current_weather_block"
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="18dp" />
+
+            <ImageView
+                android:id="@+id/weather_image"
+                android:layout_width="match_parent"
+                android:layout_height="249dp"
+                app:srcCompat="@drawable/sun_cloud_rain" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="14dp" />
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginStart="10px"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="-60px"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:gravity="center_horizontal|top"
+                android:text="23º"
+                android:textColor="#FFFFFF"
+                android:textSize="80dp" />
+
+            <TextView
+                android:id="@+id/weather_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:text="Дождь, сильный ветер"
+                android:textColor="#FFFFFF"
+                android:textSize="14.4sp" />
+
+            <TextView
+                android:id="@+id/weather_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:text="Москва, погода актуальна на 18:17"
+                android:textColor="#FFFFFF"
+                android:textSize="14.4sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

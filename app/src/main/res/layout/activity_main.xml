@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E0837"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,15 +16,49 @@
         tools:layout_editor_absoluteX="184dp"
         tools:layout_editor_absoluteY="27dp">
 
-        <TextView
-            android:id="@+id/city"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/gilroy_extrabold"
-            android:text="МОСКВА"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Button"
+                android:visibility="gone" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/gilroy_extrabold"
+                android:text="МОСКВА"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Button"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/time"
@@ -43,242 +78,179 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weather_cards_recycler"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|top"
-            android:orientation="vertical">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
+            android:layoutAnimation="@anim/weather_card_anim"
+            android:scrollbars="horizontal"
+            tools:itemCount="1"
+            tools:listitem="@layout/recyclerview_row" />
 
-            <TextView
-                android:id="@+id/last_updated_time"
-                android:layout_width="189dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/date_container"
-                android:fontFamily="@font/gilroy_semibold"
-                android:gravity="center"
-                android:text="Вс, 9 марта 2021"
-                android:textColor="#000000" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <LinearLayout
+            android:layout_width="315dp"
+            android:layout_height="92dp"
+            android:background="@drawable/ic_params_card_bg"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
 
             <LinearLayout
-                android:layout_width="285dp"
-                android:layout_height="375dp"
-                android:layout_marginTop="-15px"
-                android:background="@drawable/current_weather_block"
-                android:gravity="center_horizontal|top"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="18dp" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="11dp" />
-
-                <ImageView
-                    android:id="@+id/weather_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="223dp"
-                    app:srcCompat="@drawable/sun_cloud" />
+                <TextView
+                    android:id="@+id/humidity_icon"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/humidity_frame"
+                    android:gravity="center"
+                    android:textColor="#B9B1FA" />
 
                 <TextView
-                    android:id="@+id/temperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginStart="10px"
-                    android:layout_marginLeft="10px"
-                    android:layout_marginTop="-60px"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:gravity="center_horizontal|top"
-                    android:text="23º"
-                    android:textColor="#FFFFFF"
-                    android:textSize="80dp" />
-
-                <TextView
-                    android:id="@+id/weather_description"
+                    android:id="@+id/humidity_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/gilroy_medium"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:gravity="center"
-                    android:text="Дождь, сильный ветер"
+                    android:text="75%"
                     android:textColor="#FFFFFF"
-                    android:textSize="14.4sp" />
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/weather_comment"
+                    android:id="@+id/humidity_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:alpha="0.7"
-                    android:fontFamily="@font/gilroy_medium"
+                    android:fontFamily="@font/gilroy_bold"
                     android:gravity="center"
-                    android:text="Проведите время с пользой"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14.4sp"
-                    android:textStyle="italic" />
-
+                    android:text="ВЛАЖНОСТЬ"
+                    android:textColor="#B9B1FA"
+                    android:textSize="10sp" />
             </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="26dp" />
 
             <LinearLayout
-                android:layout_width="315dp"
-                android:layout_height="92dp"
-                android:background="@drawable/ic_params_card_bg"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="64dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                <TextView
+                    android:id="@+id/wind_icon"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/wind_frame"
+                    android:gravity="center"
+                    android:textColor="#B9B1FA" />
 
-                    <TextView
-                        android:id="@+id/humidity_icon"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:background="@drawable/humidity_frame"
-                        android:gravity="center"
-                        android:textColor="#B9B1FA" />
+                <TextView
+                    android:id="@+id/wind_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:gravity="center"
+                    android:text="8 км/ч"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/humidity_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_extrabold"
-                        android:gravity="center"
-                        android:text="75%"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/humidity_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="ВЛАЖНОСТЬ"
-                        android:textColor="#B9B1FA"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="64dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/wind_icon"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:background="@drawable/wind_frame"
-                        android:gravity="center"
-                        android:textColor="#B9B1FA" />
-
-                    <TextView
-                        android:id="@+id/wind_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_extrabold"
-                        android:gravity="center"
-                        android:text="8 км/ч"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/wind_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="ВЕТЕР"
-                        android:textColor="#B9B1FA"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="64dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/pressure_icon"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:background="@drawable/pressure_frame"
-                        android:gravity="center"
-                        android:textColor="#B9B1FA" />
-
-                    <TextView
-                        android:id="@+id/pressure_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_extrabold"
-                        android:gravity="center"
-                        android:text="1086"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/pressure_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="ДАВЛЕНИЕ"
-                        android:textColor="#B9B1FA"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="64dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/visibility_icon"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:background="@drawable/eye_frame"
-                        android:gravity="center"
-                        android:textColor="#B9B1FA" />
-
-                    <TextView
-                        android:id="@+id/visibility_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_extrabold"
-                        android:gravity="center"
-                        android:text="6 км"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/visibility_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:gravity="center"
-                        android:text="ВИДИМОСТЬ"
-                        android:textColor="#B9B1FA"
-                        android:textSize="10sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/wind_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:gravity="center"
+                    android:text="ВЕТЕР"
+                    android:textColor="#B9B1FA"
+                    android:textSize="10sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pressure_icon"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/pressure_frame"
+                    android:gravity="center"
+                    android:textColor="#B9B1FA" />
+
+                <TextView
+                    android:id="@+id/pressure_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:gravity="center"
+                    android:text="1086"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/pressure_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:gravity="center"
+                    android:text="ДАВЛЕНИЕ"
+                    android:textColor="#B9B1FA"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/visibility_icon"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/eye_frame"
+                    android:gravity="center"
+                    android:textColor="#B9B1FA" />
+
+                <TextView
+                    android:id="@+id/visibility_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:gravity="center"
+                    android:text="6 км"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/visibility_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:gravity="center"
+                    android:text="ВИДИМОСТЬ"
+                    android:textColor="#B9B1FA"
+                    android:textSize="10sp" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
