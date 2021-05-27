@@ -1,5 +1,7 @@
 package com.example.moog;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ public class RecyclerViewWeathercardAdapter extends RecyclerView.Adapter<Recycle
 
     public class WeatherCardView
             extends RecyclerView.ViewHolder {
+        Button prBtn;
         TextView city, time, temp,
                 humidity, wind_value,
                 pressure_value, weather_description,
@@ -41,6 +45,7 @@ public class RecyclerViewWeathercardAdapter extends RecyclerView.Adapter<Recycle
 
             // initialise TextViews
             {
+                prBtn = view.findViewById(R.id.button3);
                 weather_comment = view.findViewById(R.id.weather_comment);
                 city = view.findViewById(R.id.city);
                 weather_image = view.findViewById(R.id.weather_image);
@@ -81,11 +86,21 @@ public class RecyclerViewWeathercardAdapter extends RecyclerView.Adapter<Recycle
         setFadeAnimation(holder.itemView);
         holder.weather_comment.setText(list.get(position % list.size()));
         WeatherApiInteraction.updateCard(holder, list.get(position % list.size()));
-        int[] originalPos = new int[2];
-        holder.itemView.getLocationInWindow(originalPos);
-        int x = originalPos[0];
-        int y = originalPos[1];
-        Log.i("", String.valueOf(x));
+        holder.prBtn.setOnClickListener(new View.OnClickListener() {
+            String q = list.get(position % list.size());
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://openweathermap.org/find?q=" + q));
+                browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                Intent chooserIntent = Intent.createChooser(browserIntent, "Open With");
+                chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                ContextCaller.getContext().startActivity(chooserIntent);
+            }
+        }
+        );
+
     }
 
 
