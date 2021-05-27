@@ -19,16 +19,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button"
-                android:visibility="gone" />
+                android:layout_width="5dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="0.4"
+                android:width="5dp"
+                android:background="@drawable/left_arrow"
+                android:onClick="previousCard"
+                android:visibility="visible" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -52,11 +57,16 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button"
-                android:visibility="gone" />
+                android:layout_width="1px"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.4"
+                android:width="5dp"
+                android:background="@drawable/right_arrow"
+                android:onClick="nextCard"
+                android:visibility="visible" />
 
         </LinearLayout>
 
@@ -80,12 +90,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/weather_cards_recycler"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:foregroundGravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            android:foregroundGravity="clip_horizontal"
             android:layoutAnimation="@anim/weather_card_anim"
             android:scrollbars="horizontal"
             tools:itemCount="1"
@@ -93,7 +103,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="26dp" />
+            android:layout_height="12dp" />
 
         <LinearLayout
             android:layout_width="315dp"

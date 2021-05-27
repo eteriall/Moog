@@ -1,6 +1,5 @@
 package com.example.moog;
 
-import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +56,9 @@ public class WeatherApiInteraction {
         return weatherResponse[0];
     }
 
+
+
+
     static double toCelcius(double Kelvin) {
         return (Kelvin - 273.15);
     }
@@ -66,7 +68,7 @@ public class WeatherApiInteraction {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private static void _updateCard(final RecyclerViewWeathercardAdapter.MyView h, WeatherResponse weatherResponse) {
+    private static void _updateCard(final RecyclerViewWeathercardAdapter.WeatherCardView h, WeatherResponse weatherResponse) {
         int temperature_n = (int) toCelcius(weatherResponse.main.temp);
         int pressure_n = (int) weatherResponse.main.pressure;
 
@@ -84,6 +86,8 @@ public class WeatherApiInteraction {
         Integer month_i = cal.get(Calendar.MONTH) + 1;
         Integer day_i = cal.get(Calendar.DAY_OF_MONTH) + 1;
 
+        // Todo: put weatherResponse.weather.get(0).icon in weather_image
+        h.weather_image.setImageDrawable(MainActivity.imgs.get(weatherResponse.weather.get(0).icon));
         String date =
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(Locale.getDefault())
                         .format(LocalDate.of(year, month_i, day_i));
@@ -95,8 +99,9 @@ public class WeatherApiInteraction {
 
     }
 
-    public static void updateCard(RecyclerViewWeathercardAdapter.MyView h, String q) {
-        // Sending Request
+
+    public static void updateCard(RecyclerViewWeathercardAdapter.WeatherCardView h, String q) {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())

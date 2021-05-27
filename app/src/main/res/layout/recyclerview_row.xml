@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="horizontal"
     android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/infoParent"
-        android:layout_width="304dp"
-        android:layout_height="460dp"
+        android:layout_width="wrap_content"
+        android:layout_height="571dp"
         android:gravity="center_horizontal|top"
         android:orientation="vertical">
 
@@ -24,8 +28,8 @@
             android:textColor="#000000" />
 
         <LinearLayout
-            android:layout_width="323dp"
-            android:layout_height="417dp"
+            android:layout_width="382dp"
+            android:layout_height="536dp"
             android:layout_marginTop="-15px"
             android:background="@drawable/current_weather_block"
             android:gravity="center_horizontal|top"
@@ -37,26 +41,26 @@
 
             <ImageView
                 android:id="@+id/weather_image"
-                android:layout_width="match_parent"
-                android:layout_height="249dp"
-                app:srcCompat="@drawable/sun_cloud_rain" />
+                android:layout_width="wrap_content"
+                android:layout_height="256dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                app:srcCompat="@drawable/_01d" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="14dp" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/temperature"
                 android:layout_width="match_parent"
-                android:layout_height="102dp"
-                android:layout_marginStart="10px"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="-60px"
+                android:layout_height="142dp"
+                android:layout_marginTop="-30dp"
                 android:fontFamily="@font/nunito_sans_bold"
                 android:gravity="center_horizontal|top"
                 android:text="23º"
                 android:textColor="#FFFFFF"
-                android:textSize="80dp" />
+                android:textSize="120dp" />
 
             <TextView
                 android:id="@+id/weather_description"
@@ -66,7 +70,7 @@
                 android:gravity="center"
                 android:text="Дождь, сильный ветер"
                 android:textColor="#FFFFFF"
-                android:textSize="14.4sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/weather_comment"
@@ -77,8 +81,23 @@
                 android:gravity="center"
                 android:text="Москва, погода актуальна на 18:17"
                 android:textColor="#FFFFFF"
-                android:textSize="14.4sp"
+                android:textSize="20sp"
                 android:textStyle="italic" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:autoText="false"
+                android:background="#14FFFFFF"
+                android:capitalize="none"
+                android:text="Прогноз"
+                android:textColor="#ABFFFFFF" />
 
         </LinearLayout>
 

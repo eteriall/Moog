@@ -1,8 +1,7 @@
 package com.example.moog;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,68 +9,71 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.*;
-import com.google.gson.*;
-import com.example.moog.R;
-
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
-
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.Map;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView city;
     String current_city = "";
-    double lat;
-    double lon;
-    Boolean DEBUG = true;
+    double lat, lon;
+    Boolean DEBUG = false;
 
+    TextView city, pressure_value, wind_value, humidity_value;
     RecyclerView recyclerView;
     ArrayList<String> source;
     RecyclerView.LayoutManager RecyclerViewLayoutManager;
     RecyclerViewWeathercardAdapter adapter;
     LinearLayoutManager HorizontalLayout;
-    View ChildView;
-    int RecyclerViewItemPosition;
+
+    public static Map<String, Drawable> imgs = new HashMap<String, Drawable>();
+
+    protected void loadWeatherImages() {
+        imgs.put("01d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._01d));
+        imgs.put("02d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._02d));
+        imgs.put("03d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._03d));
+        imgs.put("04d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._04d));
+        imgs.put("09d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._09d));
+        imgs.put("10d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._10d));
+        imgs.put("11d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._11d));
+        imgs.put("13d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._13d));
+        imgs.put("50d", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._50d));
+        imgs.put("01n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._01n));
+        imgs.put("02n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._02n));
+        imgs.put("03n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._03n));
+        imgs.put("04n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._04n));
+        imgs.put("09n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._09n));
+        imgs.put("10n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._10n));
+        imgs.put("11n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._11n));
+        imgs.put("13n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._13n));
+        imgs.put("50n", AppCompatResources.getDrawable(getApplicationContext(), R.drawable._50n));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // Remove header from application
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -80,18 +82,24 @@ public class MainActivity extends AppCompatActivity {
         // Set layout
         setContentView(R.layout.activity_main);
 
+        loadWeatherImages();
+
+        pressure_value = findViewById(R.id.pressure_value);
+        wind_value = findViewById(R.id.wind_value);
+        humidity_value = findViewById(R.id.humidity_value);
+
 
         while (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Log.w("", "Location permission isn't provided");
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     1);
-
         }
 
         city = findViewById(R.id.city);
 
         Locale.setDefault(new Locale("ru"));
+
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set adapter on recycler view
         recyclerView.setAdapter(adapter);
+        Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2);
     }
 
     public void AddItemsToRecyclerViewArrayList() {
@@ -126,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
         source.add("Monaco");
         source.add("New Jersey");
         source.add("Paris");
+    }
+
+    public void nextCard(View v) {
+        Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2 + 1);
+    }
+
+    public void previousCard(View v) {
+        Objects.requireNonNull(recyclerView.getLayoutManager()).scrollToPosition(Integer.MAX_VALUE / 2 - 1);
     }
 
     public static String formatDate(long date, String format) {
