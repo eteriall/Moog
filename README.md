@@ -1,3 +1,4 @@
+![Frame 41 (1)](https://user-images.githubusercontent.com/57683566/120104570-b94eca80-c15d-11eb-961d-97b024f8a44c.jpg)
 # Moog
 
 ## Бизнес модель 
