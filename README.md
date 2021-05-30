@@ -1,6 +1,11 @@
 ![Frame 44](https://user-images.githubusercontent.com/57683566/120108139-89f38a00-c16c-11eb-84b2-9fc8b4adff2e.png)
 
+
+
 ### <p align="center"> Проводите время с удовольствием! Активная жизнь ещй никогда не была такой доступной: кинотеатры, кафе, арт-перфомансы - vы собрали все самые лучшие события вокруг вас в одно приложение! </p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57683566/120108448-d25f7780-c16d-11eb-9247-494f61107012.png" height="48">
+</p>
 <br>
 
 ____
