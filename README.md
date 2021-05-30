@@ -1,11 +1,16 @@
-![Frame 41 (1)](https://user-images.githubusercontent.com/57683566/120104570-b94eca80-c15d-11eb-961d-97b024f8a44c.jpg)
-# Moog Android App
-### Проводите время с удовольствием! Активная жизнь ещй никогда не была такой доступной: кинотеатры, кафе, арт-перфомансы - vы собрали все самые лучшие события вокруг вас в одно приложение!
-# Бизнес-модель:
-## Содержание
+![Frame 44](https://user-images.githubusercontent.com/57683566/120108139-89f38a00-c16c-11eb-84b2-9fc8b4adff2e.png)
+
+### <p align="center"> Проводите время с удовольствием! Активная жизнь ещй никогда не была такой доступной: кинотеатры, кафе, арт-перфомансы - vы собрали все самые лучшие события вокруг вас в одно приложение! </p>
+<br>
+
+____
+
+<br>
+
+![Frame 42 (2)](https://user-images.githubusercontent.com/57683566/120108078-3bde8680-c16c-11eb-8584-953b1ed92084.png)
 -	__Методы получения прибыли__
     - Реклама 
-        -	Рекламные интеграции 
+        - Рекламные интеграции
     - Сотрудничество с организациями
         - Повышение количества рекомендуемых визитов в определённые организации.
         - Снижения количества рекомендуемых визитов в определённые организации.
@@ -20,17 +25,41 @@
     - Организация
         - Выгода
         - Альтернативные издержки
-- Бонусный материал
-    - Идеи
-    - Контент
-- План развития
+- __План развития__
     - PR Сервиса
     - Привлечение пользователей
+- __Бонусный материал__
+    - Идеи
+    - Контент
 
-# Методы получения прибыли
+___
+
+![Frame 43](https://user-images.githubusercontent.com/57683566/120108115-67fa0780-c16c-11eb-856d-dd11795986aa.png)
+
+
+
+
 ## Реклама
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Наш проект может позваолить себе встраивать таргетированную рекламу непосредственно в само приложение сервиса. Благодаря данной рекламе планируется получать 40% от общей прибыли. Остальные 60 %  планируется получать за счёт сотрудничества со сторонними организациями.
 
 ## Сотрудничество с организациями
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Благодаря регулируемым рекомендациям нашего сервиса мы можем увеличить количество рекомендуемых показов определённой организации. Т.е. повышать видимость некоторых организаций в ленте организаций, рекомендуемых к посещению. (В дальнейшем - "буст", "бустить" от англ. - boost)
+
+За определённую ежемесячную плату от организации мы можем бустить ееё в списке организаций, тем самым увеличивая уоличество посетителей для организации, тем самым, увеличивая её прибыль. Стоимость подписки для каждой организации рассчитывается в индивидуальном порядке.
+
+
+## Подписка на сервис
+### Скидки в кафе и ресторанах. Скидки на билеты в театр, кино и т.д.
+### Билеты на закрытые мероприятия
+
+# Клиенты
+## Физ. Лицо
+## Организация
+
+# План развития
+![Bus Stop Ad](https://user-images.githubusercontent.com/57683566/120106983-d12b4c00-c167-11eb-9fbb-8c2fa02f4524.png)
+
+# Бонусный материал
+
+
 
